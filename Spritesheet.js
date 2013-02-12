@@ -1,5 +1,6 @@
 //2d canvas spritesheet creator and animator
 function Spritesheet(myWidth,myHeight,myX,myY,myContext,myImage,myColumns,myRows,myNumOfFrames){
+	//---------------------------------------------------------PROPERTIES
 	this.width = myWidth;
 	this.height = myHeight;
 	this.x = myX;
@@ -20,7 +21,7 @@ function Spritesheet(myWidth,myHeight,myX,myY,myContext,myImage,myColumns,myRows
 	var frameY = 0;
 	var frame = 1;
 	
-
+	//---------------------------------------------------------METHODS
 	this.loadImage = function(){
 
 		this.image.src = this.imageSrc;
@@ -56,7 +57,6 @@ function Spritesheet(myWidth,myHeight,myX,myY,myContext,myImage,myColumns,myRows
 			}
 		}
 	};
-
 	this.resetFrames = function(){
 		frameX = 0;
 		frameY = 0;
