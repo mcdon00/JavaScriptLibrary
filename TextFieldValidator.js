@@ -1,6 +1,7 @@
-function TextFieldValidator(myTarget,myColor) {
+function TextFieldValidator(myTarget,myRegex,myColor) {
     /**regular expression to be used */
-    this.regex = /^(\d)$/;
+    //this.regex = /^(\d)$/;
+    this.regex = myRegex;
     /**color of the text field if regex does not match */
     this.strErrorColor = myColor;
     /**text field object to be validated */
@@ -13,6 +14,8 @@ function TextFieldValidator(myTarget,myColor) {
 
     if(myColor == null){
         this.strErrorColor = "red";
+    }else if(myRegex == null){
+        this.regex = /^(\d)$/;
     }
     
     //---------------------------------------------------------------SET/GET METHODS
