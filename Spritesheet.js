@@ -1,6 +1,8 @@
 //2d canvas spritesheet creator and animator
 function Spritesheet(myWidth,myHeight,myX,myY,myContext,myImage,myColumns,myRows,myNumOfFrames){
 	//---------------------------------------------------------PROPERTIES
+	/*TODO animations flicker first time, something wrong with frameX Y or frame starting at 1 the 
+	first time*/
 	this.width = myWidth;
 	this.height = myHeight;
 	this.x = myX;
@@ -31,7 +33,6 @@ function Spritesheet(myWidth,myHeight,myX,myY,myContext,myImage,myColumns,myRows
 	var oldSet = "";
 	//  variable to hold the original total number of frames 
 	var origTotalFrames = myNumOfFrames;
-	
 	//---------------------------------------------------------METHODS
 	//add a new set of frames to animate
 	this.addSet = function(strName,beginFrame,endFrame){
@@ -52,7 +53,6 @@ function Spritesheet(myWidth,myHeight,myX,myY,myContext,myImage,myColumns,myRows
 				frameX = beginX;
 				frameY++;
 				if(frameY >= this.rows){
-					console.log(myRows);
 					frameY = beginY;
 				}
 			}
@@ -92,11 +92,9 @@ function Spritesheet(myWidth,myHeight,myX,myY,myContext,myImage,myColumns,myRows
 		//check if image was loaded successfuly 
 		
 		if(this.imageLoaded){
-			// console.log(frameX);
 			this.ctx.drawImage(this.image, frameX*this.width, frameY*this.height, this.width, this.height, this.x-this.width/2, this.y-this.height/2, this.width, this.height);	
 			frame++;
 			if(!(frame > this.totalFrames)){//may have to switch back to >=
-
 				frameX++;
 				if(frameX >= myColumns){
 					frameX = beginX;
