@@ -121,11 +121,22 @@ debugObjPos(obj,objName,canvas,txtColor,x,y){
 }
 
 function boxCollides(obj1,obj2){
-
 	 return (obj1.x-obj1.r <= obj2.x + obj2.r && //1left is to the left 2right
         obj2.x-obj1.r <= obj1.x + obj1.r && //2left is to the left of 1 right
     	obj1.y-obj1.r <= obj2.y + obj2.r && // 1top is to the top of 2bottom
         obj2.y-obj1.r <= obj1.y + obj1.r)
-
 }
 
+function radCollides(obj1,obj2) { 
+	distanceX = Math.abs((obj1.x - obj2.x));
+	distanceY = Math.abs((obj1.y - obj2.y));
+
+	hy = Math.sqrt((distanceX*distanceX) + (distanceY*distanceY));
+	hy -= (obj1.r + obj2.r);
+	
+	if(hy <=0){
+		return true;
+	}else{
+		return false;
+	}
+}
